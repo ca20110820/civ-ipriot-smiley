@@ -14,7 +14,7 @@ if __name__ == '__main__':
     ############################################################
 
     # Create a happy smiley, which is a subclass of Smiley
-    smiley = Happy(color="YELLOW")
+    smiley = Happy(color="GREEN")
     # smiley = Sad()
 
     # This is a form of #polymorphism, as the Happy smiley class

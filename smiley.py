@@ -12,10 +12,12 @@ class Smiley:
         # We have encapsulated the SenseHat object
         self.sense_hat = SenseHat()
 
-        self.color = color
+        # self.color = color
+
+        self.my_complexion = self.complexion(color)
 
         # Y = self.YELLOW
-        Y = self.complexion(color)
+        Y = self.my_complexion
         O = self.BLANK
         self.pixels = [
             O, Y, Y, Y, Y, Y, Y, O,
