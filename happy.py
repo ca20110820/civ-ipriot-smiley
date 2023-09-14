@@ -13,25 +13,27 @@ class Happy(Smiley, Blinkable):
     method.See {meth:blink} below.
     """
 
-    HAPPY_COLOR = Smiley.GREEN
+    # HAPPY_COLOR = Smiley.GREEN
 
-    def __init__(self):
-        # super().__init__()
+    def __init__(self, color="GREEN"):
+        super().__init__(color=color)
 
-        self.sense_hat = SenseHat()
+        # self.color = color
 
-        Y = self.HAPPY_COLOR
-        O = self.BLANK
-        self.pixels = [
-            O, Y, Y, Y, Y, Y, Y, O,
-            Y, Y, Y, Y, Y, Y, Y, Y,
-            Y, Y, Y, Y, Y, Y, Y, Y,
-            Y, Y, Y, Y, Y, Y, Y, Y,
-            Y, Y, Y, Y, Y, Y, Y, Y,
-            Y, Y, Y, Y, Y, Y, Y, Y,
-            Y, Y, Y, Y, Y, Y, Y, Y,
-            O, Y, Y, Y, Y, Y, Y, O,
-        ]
+        # self.sense_hat = SenseHat()
+        #
+        # Y = self.HAPPY_COLOR
+        # O = self.BLANK
+        # self.pixels = [
+        #     O, Y, Y, Y, Y, Y, Y, O,
+        #     Y, Y, Y, Y, Y, Y, Y, Y,
+        #     Y, Y, Y, Y, Y, Y, Y, Y,
+        #     Y, Y, Y, Y, Y, Y, Y, Y,
+        #     Y, Y, Y, Y, Y, Y, Y, Y,
+        #     Y, Y, Y, Y, Y, Y, Y, Y,
+        #     Y, Y, Y, Y, Y, Y, Y, Y,
+        #     O, Y, Y, Y, Y, Y, Y, O,
+        # ]
 
         self.draw_mouth()
         self.draw_eyes()
@@ -51,7 +53,7 @@ class Happy(Smiley, Blinkable):
         """
         eyes = [10, 13, 18, 21]
         for pixel in eyes:
-            self.pixels[pixel] = self.BLANK if wide_open else self.HAPPY_COLOR
+            self.pixels[pixel] = self.BLANK if wide_open else self.complexion(self.color)
 
     def blink(self, delay=0.25):
         """

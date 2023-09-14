@@ -7,26 +7,28 @@ class Sad(Smiley, Blinkable):
     """
     Completely override the __init__
     """
-    SAD_COLOR = Smiley.RED
+    # SAD_COLOR = Smiley.RED
 
-    def __init__(self):
-        # super().__init__()
+    def __init__(self, color="RED"):
+        super().__init__(color=color)
 
-        self.sense_hat = SenseHat()
+        # self.color = color
+
+        # self.sense_hat = SenseHat()
 
         # Y = self.YELLOW
-        Y = self.SAD_COLOR
-        O = self.BLANK
-        self.pixels = [
-            O, Y, Y, Y, Y, Y, Y, O,
-            Y, Y, Y, Y, Y, Y, Y, Y,
-            Y, Y, Y, Y, Y, Y, Y, Y,
-            Y, Y, Y, Y, Y, Y, Y, Y,
-            Y, Y, Y, Y, Y, Y, Y, Y,
-            Y, Y, Y, Y, Y, Y, Y, Y,
-            Y, Y, Y, Y, Y, Y, Y, Y,
-            O, Y, Y, Y, Y, Y, Y, O,
-        ]
+        # Y = self.SAD_COLOR
+        # O = self.BLANK
+        # self.pixels = [
+        #     O, Y, Y, Y, Y, Y, Y, O,
+        #     Y, Y, Y, Y, Y, Y, Y, Y,
+        #     Y, Y, Y, Y, Y, Y, Y, Y,
+        #     Y, Y, Y, Y, Y, Y, Y, Y,
+        #     Y, Y, Y, Y, Y, Y, Y, Y,
+        #     Y, Y, Y, Y, Y, Y, Y, Y,
+        #     Y, Y, Y, Y, Y, Y, Y, Y,
+        #     O, Y, Y, Y, Y, Y, Y, O,
+        # ]
 
         self.draw_mouth()
         self.draw_eyes()
@@ -46,7 +48,7 @@ class Sad(Smiley, Blinkable):
         """
         eyes = [10, 13, 18, 21]
         for pixel in eyes:
-            self.pixels[pixel] = self.BLANK if wide_open else self.SAD_COLOR
+            self.pixels[pixel] = self.BLANK if wide_open else self.complexion(self.color)
 
     def blink(self, delay=0.25):
         """
