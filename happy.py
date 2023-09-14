@@ -1,6 +1,6 @@
 import time
 from blinkable import Blinkable
-from smiley import Smiley
+from smiley import Smiley, SenseHat
 
 
 class Happy(Smiley, Blinkable):
@@ -12,8 +12,26 @@ class Happy(Smiley, Blinkable):
     Blinkable, this class promises to implement the abstract
     method.See {meth:blink} below.
     """
+
+    HAPPY_COLOR = Smiley.GREEN
+
     def __init__(self):
-        super().__init__()
+        # super().__init__()
+
+        self.sense_hat = SenseHat()
+
+        Y = self.HAPPY_COLOR
+        O = self.BLANK
+        self.pixels = [
+            O, Y, Y, Y, Y, Y, Y, O,
+            Y, Y, Y, Y, Y, Y, Y, Y,
+            Y, Y, Y, Y, Y, Y, Y, Y,
+            Y, Y, Y, Y, Y, Y, Y, Y,
+            Y, Y, Y, Y, Y, Y, Y, Y,
+            Y, Y, Y, Y, Y, Y, Y, Y,
+            Y, Y, Y, Y, Y, Y, Y, Y,
+            O, Y, Y, Y, Y, Y, Y, O,
+        ]
 
         self.draw_mouth()
         self.draw_eyes()
@@ -33,7 +51,7 @@ class Happy(Smiley, Blinkable):
         """
         eyes = [10, 13, 18, 21]
         for pixel in eyes:
-            self.pixels[pixel] = self.BLANK if wide_open else self.YELLOW
+            self.pixels[pixel] = self.BLANK if wide_open else self.HAPPY_COLOR
 
     def blink(self, delay=0.25):
         """
