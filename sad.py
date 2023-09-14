@@ -1,11 +1,32 @@
 import time
 
-from smiley import Smiley
+from smiley import Smiley, SenseHat
 from blinkable import Blinkable
 
 class Sad(Smiley, Blinkable):
+    """
+    Completely override the __init__
+    """
+    SAD_COLOR = Smiley.RED
+
     def __init__(self):
-        super().__init__()
+        # super().__init__()
+
+        self.sense_hat = SenseHat()
+
+        # Y = self.YELLOW
+        Y = self.SAD_COLOR
+        O = self.BLANK
+        self.pixels = [
+            O, Y, Y, Y, Y, Y, Y, O,
+            Y, Y, Y, Y, Y, Y, Y, Y,
+            Y, Y, Y, Y, Y, Y, Y, Y,
+            Y, Y, Y, Y, Y, Y, Y, Y,
+            Y, Y, Y, Y, Y, Y, Y, Y,
+            Y, Y, Y, Y, Y, Y, Y, Y,
+            Y, Y, Y, Y, Y, Y, Y, Y,
+            O, Y, Y, Y, Y, Y, Y, O,
+        ]
 
         self.draw_mouth()
         self.draw_eyes()
@@ -25,7 +46,7 @@ class Sad(Smiley, Blinkable):
         """
         eyes = [10, 13, 18, 21]
         for pixel in eyes:
-            self.pixels[pixel] = self.BLANK if wide_open else self.YELLOW
+            self.pixels[pixel] = self.BLANK if wide_open else self.SAD_COLOR
 
     def blink(self, delay=0.25):
         """
